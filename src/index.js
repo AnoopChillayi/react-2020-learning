@@ -4,6 +4,8 @@ import './index.css';
 // import App from './App';
 import * as serviceWorker from './serviceWorker';
 
+import ANOOP, {ABCD as JACK,XYZ} from './ExportSample'
+
 //pure function 
 function add(a, b) {
   a = 50;
@@ -24,13 +26,17 @@ class Welcome extends React.Component {
 
   constructor(props) {
     super(props);
-
     this.state = {
       pincode: '680724'
     }
 
+
   }
   componentDidMount() {
+    // ANOOP()
+    // JACK();
+    XYZ();
+
     console.log("in did mount")
 
 
@@ -44,12 +50,18 @@ class Welcome extends React.Component {
   }
 
   componentDidUpdate() {
-    console.log("in did update")
+    // console.log("in did update")
   }
+
+   nameClick=(e)=>{
+    // alert("cliked")
+    console.log(e)
+  }
+
   render() {
     return (
       <>
-        <div >Name : {this.props.name}</div>
+        <div onClick={this.nameClick}>Name : {this.props.name}</div>
         <div >address : {this.props.address}</div>
         <div >Pincode {this.state.pincode}</div>
       </>
