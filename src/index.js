@@ -71,12 +71,59 @@ class Welcome extends React.Component {
 
 }
 
+
+function LoanDetails(props){
+
+
+  return(
+
+    <table>
+      <tr>
+        <td>
+          rate
+          </td>
+          <td>
+            {props.rate}
+          </td>
+        </tr>
+    </table>
+  )
+}
+
 class App extends React.Component {
 
   state = {
-    name: 'vishnu'
+    name: 'vishnu',
+    jack:'jack',
+    address:'',
+    fullName:null
   }
 
+
+
+handleChange =(event) =>{
+  console.log(event.target.value)
+this.setState({
+  jack:event.target.value})
+
+}
+
+handleChangeAddress =(event) =>{
+this.setState({
+  [event.target.name]:event.target.value})
+
+}
+
+
+calculate=()=>{
+// console.log(this.state.jack);
+// console.log(this.state.address)
+
+this.setState({
+  fullName:this.state.jack + " " + this.state.address 
+})
+
+}
   componentDidMount(){
    
     setTimeout(() => {
@@ -88,11 +135,45 @@ class App extends React.Component {
     }, 5000)
   }
   render() {
+console.log(this.state.fullName)
+
+    // var a:{
+    //     const:10
+    // }
+
+    // a.b
+    // a["b"]
+    // a["const"]
+
+    // return null;
+    // return [1,2,3];
+    // return 1;
+    // return "abcded"
     return (
       <>
         {/* <Welcome1 name="anoop" address="chalakudy" /> */}
         <Welcome name={this.state.name} address="chalakudy" />
-      </>
+        name
+        <input value={this.state.jack} name="jack" onChange={this.handleChangeAddress}/>
+        address
+        <input value={this.state.address} name="address" onChange={this.handleChangeAddress}/>
+        <button onClick={this.calculate}>Calculate</button>
+{
+           !this.state.fullName ?
+           null:
+           <>
+           <h1>Full Name</h1>
+           <h2>{this.state.fullName}</h2>
+           </>
+
+}
+        
+
+        <LoanDetails rate="10%"/>
+
+
+
+     </>
     )
   }
 }
